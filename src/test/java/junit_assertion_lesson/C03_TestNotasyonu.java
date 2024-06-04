@@ -1,4 +1,4 @@
-package junit_lesson;
+package junit_assertion_lesson;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
