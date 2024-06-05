@@ -1,7 +1,9 @@
 package junit_assertion_cases;
 import com.sun.source.tree.AssertTree;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,19 +13,28 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class JUnitTestCase {
+    static WebDriver driver;
+
+    @BeforeClass
+    public  static void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        driver.close();
+    }
 
     @Test
     public void case01 (){
         //1. Launch browser
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
         //2. Navigate to url 'http://automationexercise.com'
         driver.get("http://automationexercise.com");
 
-        //3. Verify that home page is visible successfully
+        //3. Verify that home page is visible successfully  1
         WebElement logoElement = driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[1]/div/a/img"));
         Assert.assertTrue(logoElement.isDisplayed());
 
@@ -58,15 +69,10 @@ public class JUnitTestCase {
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals(expectedUrl, actualUrl);
         //11. Close driver
-        driver.close();
+        driver.quit();
     }
         @Test
         public void case02() {
-        //1. Launch browser
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver=new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         //2. Navigate to url 'http://automationexercise.com'
         driver.get("http://automationexercise.com");
         //3. Verify that home page is visible successfully
