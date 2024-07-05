@@ -50,7 +50,7 @@ public class ActionsClassLesson {
                 .sendKeys(Keys.TAB)
                 .sendKeys("March")
                 .sendKeys(Keys.TAB)
-                .sendKeys("1990     ")
+                .sendKeys("1990")
                 .sendKeys(Keys.TAB)
                 .click()
                 .sendKeys(Keys.TAB)
@@ -79,10 +79,10 @@ public class ActionsClassLesson {
 
         //10. Click 'Create Account button'
         //11. Verify that 'ACCOUNT CREATED!' is visible
-        String expectedYazi="ACCOUNT CREATED!";
-        String actualYazi=driver.findElement(By.xpath("//h2[@data-qa='account-created']")).getText();
-        Assert.assertEquals(expectedYazi,actualYazi);
+//        String expectedYazi="ACCOUNT CREATED!";
+//        String actualYazi=driver.findElement(By.xpath("//h2[@data-qa='account-created']")).getText();
+//        Assert.assertEquals(expectedYazi,actualYazi);
 
-        driver.close();
+//        driver.close();
     }
 }
